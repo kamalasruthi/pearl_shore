@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %}Contact | Pearlshore Technologies{% endblock %}
+{% block content %}
+<section class="page-hero contact-hero">
+  <div class="container narrow reveal">
+    <div class="eyebrow"><span></span>Start a conversation</div>
+    <h1>Tell us what you are building.</h1>
+    <p>Share the challenge, the idea, or simply where you feel stuck. We will reply with a thoughtful next step.</p>
+  </div>
+</section>
+
+<section class="section contact-section">
+  <div class="container contact-grid">
+    <div class="contact-info reveal">
+      <div class="eyebrow"><span></span>Contact details</div>
+      <h2>Let's find the right path forward.</h2>
+      <p>We typically respond within one business day.</p>
+      <div class="contact-list">
+        <a href="mailto:kamalasruthi03@gmail.com"><span>Email</span><strong>kamalasruthi03@gmail.com</strong></a>
+        <a href="tel:{{ site_content.phone|replace(' ', '') }}"><span>Phone</span><strong>{{ site_content.phone }}</strong></a>
+        <div><span>Location</span><strong>{{ site_content.location }}</strong></div>
+      </div>
+      <div class="availability"><i></i><span>Currently accepting new projects</span></div>
+    </div>
+    <form class="contact-form reveal" method="post">
+      <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+      <div class="field-row">
+        <label><span>Your name *</span><input name="name" value="{{ form_data.get('name', '') }}" required autocomplete="name" placeholder="Jane Smith"></label>
+        <label><span>Work email *</span><input name="email" value="{{ form_data.get('email', '') }}" type="email" required autocomplete="email" placeholder="jane@company.com"></label>
+      </div>
+      <div class="field-row">
+        <label><span>Phone number</span><input name="phone" value="{{ form_data.get('phone', '') }}" type="tel" autocomplete="tel" placeholder="+91 98765 43210"></label>
+        <label><span>Service interested in</span>
+          <select name="service">
+            <option value="">Select a service</option>
+            {% for service in services %}
+            {% set selected_service = form_data.get('service', request.args.get('service', '')) %}
+            <option value="{{ service.title }}" {{ 'selected' if selected_service == service.title }}>{{ service.title }}</option>
+            {% endfor %}
+          </select>
+        </label>
+      </div>
+      <label><span>Tell us about your project *</span><textarea name="message" rows="6" required placeholder="What would you like to create or improve?">{{ form_data.get('message', '') }}</textarea></label>
+      <button class="button button-primary form-submit" type="submit">Send inquiry <span>&rarr;</span></button>
+      <p class="form-note">Your information is used only to respond to this inquiry.</p>
+    </form>
+  </div>
+</section>
+
+<section class="map-section">
+  <iframe title="Pearlshore Technologies location in Chennai" src="https://www.google.com/maps?q=Chennai%2C%20India&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  <div class="map-label"><strong>Pearlshore Technologies</strong><span>Chennai, Tamil Nadu, India</span></div>
+</section>
+{% endblock %}

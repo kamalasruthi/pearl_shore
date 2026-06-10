@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% from "macros.html" import service_icon %}
+{% block content %}
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-copy reveal">
+      <div class="eyebrow"><span></span>{{ site_content.hero_eyebrow }}</div>
+      <h1>{{ site_content.hero_title }}</h1>
+      <p>{{ site_content.hero_text }}</p>
+      <div class="hero-actions">
+        <a class="button button-primary" href="{{ url_for('services') }}">Explore our services <span>&rarr;</span></a>
+        <a class="button button-ghost" href="{{ url_for('contact') }}">Start a conversation</a>
+      </div>
+      <div class="trust-row">
+        <span>Built for ambitious teams</span>
+        <div><strong>3</strong> connected disciplines</div>
+        <div><strong>100%</strong> tailored solutions</div>
+      </div>
+    </div>
+    <div class="hero-visual reveal">
+      <div class="visual-orbit orbit-one"></div>
+      <div class="visual-orbit orbit-two"></div>
+      <div class="hero-logo-card">
+        <img src="{{ url_for('static', filename='images/pearlshore-logo.png') }}" alt="Pearlshore Technologies logo">
+      </div>
+      <div class="floating-chip chip-one"><i></i> Product Engineering</div>
+      <div class="floating-chip chip-two"><i></i> Experience Design</div>
+      <div class="floating-chip chip-three"><i></i> Digital Growth</div>
+    </div>
+  </div>
+  <a class="scroll-cue" href="#services-preview"><span></span>Scroll to discover</a>
+</section>
+
+<section class="logo-strip">
+  <div class="container">
+    <p>One partner. Every stage of your digital journey.</p>
+    <div class="capability-list">
+      <span>Strategy</span><i></i><span>Design</span><i></i><span>Engineering</span><i></i><span>Growth</span>
+    </div>
+  </div>
+</section>
+
+<section class="section services-preview" id="services-preview">
+  <div class="container">
+    <div class="section-heading reveal">
+      <div>
+        <div class="eyebrow"><span></span>What we do</div>
+        <h2>Expertise that turns ideas into impact.</h2>
+      </div>
+      <p>From the first sketch to the next stage of growth, our integrated team keeps technology, experience, and business outcomes aligned.</p>
+    </div>
+    <div class="service-grid">
+      {% for service in services %}
+      <article class="service-card reveal">
+        <div class="card-top">{{ service_icon(service.icon) }}<span>0{{ loop.index }}</span></div>
+        <h3>{{ service.title }}</h3>
+        <p>{{ service.description }}</p>
+        <ul>
+          {% for item in service.benefits.split(',')[:3] %}
+          <li>{{ item.strip() }}</li>
+          {% endfor %}
+        </ul>
+        <a href="{{ url_for('services') }}#{{ service.icon }}">Explore capability <span>&rarr;</span></a>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section approach-section">
+  <div class="container approach-grid">
+    <div class="approach-visual reveal">
+      <div class="approach-number">01</div>
+      <div class="approach-number">02</div>
+      <div class="approach-number">03</div>
+      <div class="approach-line"></div>
+    </div>
+    <div class="approach-copy reveal">
+      <div class="eyebrow"><span></span>How we work</div>
+      <h2>Clarity at every step.</h2>
+      <p>Good work starts with listening. We shape the right problem, build in focused increments, and measure what matters.</p>
+      <div class="process-list">
+        <div><span>01</span><h3>Discover</h3><p>Goals, users, constraints, and the opportunity ahead.</p></div>
+        <div><span>02</span><h3>Design and build</h3><p>Fast, collaborative cycles with quality engineered in.</p></div>
+        <div><span>03</span><h3>Launch and evolve</h3><p>Confident releases backed by learning and iteration.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section cta-section">
+  <div class="container">
+    <div class="cta-card reveal">
+      <div class="cta-orb"></div>
+      <div>
+        <div class="eyebrow light"><span></span>Your next chapter</div>
+        <h2>Ready to build something meaningful?</h2>
+        <p>Tell us where you want to go. We will help you find the clearest path there.</p>
+      </div>
+      <a class="button button-light" href="{{ url_for('contact') }}">Book a consultation <span>&rarr;</span></a>
+    </div>
+  </div>
+</section>
+{% endblock %}

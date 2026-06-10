@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% from "macros.html" import service_icon %}
+{% block title %}Services | Pearlshore Technologies{% endblock %}
+{% block content %}
+<section class="page-hero services-hero">
+  <div class="container narrow reveal">
+    <div class="eyebrow"><span></span>Our capabilities</div>
+    <h1>Strategy, design, and technology working as one.</h1>
+    <p>Choose a focused capability or bring us a complex challenge. We shape each engagement around the outcome you need.</p>
+  </div>
+</section>
+
+<section class="section service-details">
+  <div class="container">
+    {% for service in services %}
+    <article class="service-detail reveal" id="{{ service.icon }}">
+      <div class="service-detail-head">
+        {{ service_icon(service.icon) }}
+        <span>Capability 0{{ loop.index }}</span>
+      </div>
+      <div class="service-detail-grid">
+        <div><h2>{{ service.title }}</h2><p class="lead">{{ service.description }}</p></div>
+        <div class="detail-columns">
+          <div><h3>What we deliver</h3><ul>{% for item in service.benefits.split(',') %}<li>{{ item.strip() }}</li>{% endfor %}</ul></div>
+          <div><h3>Tools and technology</h3><div class="tag-list">{% for item in service.technologies.split(',') %}<span>{{ item.strip() }}</span>{% endfor %}</div></div>
+        </div>
+      </div>
+      <a class="text-link" href="{{ url_for('contact') }}?service={{ service.title|urlencode }}">Discuss this service <span>&rarr;</span></a>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="section why-section">
+  <div class="container">
+    <div class="section-heading reveal"><div><div class="eyebrow"><span></span>Why Pearlshore</div><h2>Small enough to care. Capable enough to deliver.</h2></div></div>
+    <div class="value-grid three">
+      <article class="reveal"><span>01</span><h3>Outcome-led</h3><p>Technology choices stay grounded in customer and business value.</p></article>
+      <article class="reveal"><span>02</span><h3>Senior attention</h3><p>Experienced thinking remains close to the work from start to finish.</p></article>
+      <article class="reveal"><span>03</span><h3>Designed to scale</h3><p>Maintainability, security, and performance are part of the foundation.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="section cta-section">
+  <div class="container">
+    <div class="cta-card reveal">
+      <div><div class="eyebrow light"><span></span>Have a project in mind?</div><h2>Let's make the next move count.</h2><p>A focused first conversation is all it takes to get started.</p></div>
+      <a class="button button-light" href="{{ url_for('contact') }}">Book a consultation <span>&rarr;</span></a>
+    </div>
+  </div>
+</section>
+{% endblock %}

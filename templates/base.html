@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Pearlshore Technologies builds scalable software, intuitive digital experiences, and measurable growth strategies.">
+  <meta name="theme-color" content="#07182f">
+  <title>{% block title %}Pearlshore Technologies{% endblock %}</title>
+  <link rel="icon" href="{{ url_for('static', filename='images/pearlshore-logo.png') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  {% block head %}{% endblock %}
+</head>
+<body>
+  <div class="page-glow page-glow-one"></div>
+  <div class="page-glow page-glow-two"></div>
+  <header class="site-header" id="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="{{ url_for('home') }}" aria-label="Pearlshore Technologies home">
+        <img src="{{ url_for('static', filename='images/pearlshore-logo.png') }}" alt="Pearlshore Technologies logo">
+        <span><strong>PearlShore</strong><small>Technologies</small></span>
+      </a>
+      <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a class="{{ 'active' if request.endpoint == 'home' }}" href="{{ url_for('home') }}">Home</a>
+        <a class="{{ 'active' if request.endpoint == 'about' }}" href="{{ url_for('about') }}">About</a>
+        <a class="{{ 'active' if request.endpoint == 'services' }}" href="{{ url_for('services') }}">Services</a>
+        <a class="nav-cta" href="{{ url_for('contact') }}">Let's talk <span>&rarr;</span></a>
+      </nav>
+    </div>
+  </header>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <div class="toast-stack" aria-live="polite">
+        {% for category, message in messages %}
+          <div class="toast toast-{{ category }}">{{ message }}<button type="button" aria-label="Close">&times;</button></div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+
+  <main>{% block content %}{% endblock %}</main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="{{ url_for('home') }}">
+          <img src="{{ url_for('static', filename='images/pearlshore-logo.png') }}" alt="Pearlshore Technologies logo">
+          <span><strong>PearlShore</strong><small>Technologies</small></span>
+        </a>
+        <p>Engineering thoughtful digital products from Chennai to the world.</p>
+        <a class="footer-email" href="mailto:kamalasruthi03@gmail.com">kamalasruthi03@gmail.com</a>
+      </div>
+      <div>
+        <h3>Explore</h3>
+        <a href="{{ url_for('about') }}">About us</a>
+        <a href="{{ url_for('services') }}">Services</a>
+        <a href="{{ url_for('contact') }}">Contact</a>
+        <a href="{{ url_for('admin_login') }}">Admin</a>
+      </div>
+      <div>
+        <h3>Capabilities</h3>
+        <a href="{{ url_for('services') }}#product">Product engineering</a>
+        <a href="{{ url_for('services') }}#design">UI/UX and branding</a>
+        <a href="{{ url_for('services') }}#growth">Digital growth</a>
+      </div>
+      <div>
+        <h3>Stay in the loop</h3>
+        <p class="footer-note">Occasional ideas on building better digital products.</p>
+        <form class="subscribe-form" action="{{ url_for('subscribe') }}" method="post">
+          <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+          <label class="sr-only" for="footer-email">Email address</label>
+          <input id="footer-email" name="email" type="email" placeholder="you@company.com" required>
+          <button type="submit" aria-label="Subscribe">&rarr;</button>
+        </form>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>&copy; {{ current_year }} Pearlshore Technologies. All rights reserved.</span>
+      <span>Chennai, India</span>
+    </div>
+  </footer>
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

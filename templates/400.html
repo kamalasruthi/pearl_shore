@@ -1,0 +1,5 @@
+{% extends "base.html" %}
+{% block title %}Invalid Request | Pearlshore Technologies{% endblock %}
+{% block content %}
+<section class="error-page"><div class="container narrow"><span>400</span><h1>That request could not be completed.</h1><p>{{ message }}</p><a class="button button-primary" href="{{ url_for('home') }}">Return home</a></div></section>
+{% endblock %}

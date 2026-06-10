@@ -1,0 +1,17 @@
+{% extends "admin/base.html" %}
+{% block title %}Website Content{% endblock %}
+{% block content %}
+<section class="admin-page-head"><div><span>Website</span><h1>Core content</h1><p>Update important homepage, about, and contact details.</p></div></section>
+<form class="admin-form admin-panel" method="post">
+  <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+  <div class="form-grid">
+    <label>Hero eyebrow<input name="hero_eyebrow" value="{{ content.hero_eyebrow }}"></label>
+    <label class="wide">Hero headline<input name="hero_title" value="{{ content.hero_title }}"></label>
+    <label class="wide">Hero introduction<textarea name="hero_text" rows="4">{{ content.hero_text }}</textarea></label>
+    <label class="wide">About introduction<textarea name="about_intro" rows="4">{{ content.about_intro }}</textarea></label>
+    <label>Phone number<input name="phone" value="{{ content.phone }}"></label>
+    <label>Location<input name="location" value="{{ content.location }}"></label>
+  </div>
+  <button class="admin-primary" type="submit">Save content</button>
+</form>
+{% endblock %}

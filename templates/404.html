@@ -1,0 +1,5 @@
+{% extends "base.html" %}
+{% block title %}Page Not Found | Pearlshore Technologies{% endblock %}
+{% block content %}
+<section class="error-page"><div class="container narrow"><span>404</span><h1>This page drifted out of range.</h1><p>The page you are looking for does not exist or has moved.</p><a class="button button-primary" href="{{ url_for('home') }}">Return home</a></div></section>
+{% endblock %}

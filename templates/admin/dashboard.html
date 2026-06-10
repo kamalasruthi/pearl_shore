@@ -1,0 +1,18 @@
+{% extends "admin/base.html" %}
+{% block title %}Overview{% endblock %}
+{% block content %}
+<section class="admin-page-head"><div><span>Overview</span><h1>Good to see you.</h1><p>Here is what is happening across Pearlshore's website.</p></div><a class="admin-primary" href="{{ url_for('admin_service_new') }}">Add service</a></section>
+<section class="stat-grid">
+  <article><span>Services</span><strong>{{ stats.services }}</strong><small>Published and draft</small></article>
+  <article><span>Total inquiries</span><strong>{{ stats.inquiries }}</strong><small>All-time messages</small></article>
+  <article><span>Needs attention</span><strong>{{ stats.new_inquiries }}</strong><small>New inquiries</small></article>
+  <article><span>Subscribers</span><strong>{{ stats.subscribers }}</strong><small>Newsletter audience</small></article>
+</section>
+<section class="admin-panel">
+  <div class="panel-head"><div><span>Inbox</span><h2>Recent inquiries</h2></div><a href="{{ url_for('admin_inquiries') }}">View all</a></div>
+  <div class="table-wrap">
+    <table><thead><tr><th>Name</th><th>Service</th><th>Received</th><th>Status</th></tr></thead>
+    <tbody>{% for item in inquiries %}<tr><td><strong>{{ item.name }}</strong><small>{{ item.email }}</small></td><td>{{ item.service or "General inquiry" }}</td><td>{{ item.created_at[:10] }}</td><td><span class="status status-{{ item.status }}">{{ item.status }}</span><small>Email: {{ item.email_status }}</small></td></tr>{% else %}<tr><td colspan="4" class="empty">No inquiries yet.</td></tr>{% endfor %}</tbody></table>
+  </div>
+</section>
+{% endblock %}

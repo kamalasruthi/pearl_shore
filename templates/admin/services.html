@@ -1,0 +1,9 @@
+{% extends "admin/base.html" %}
+{% block title %}Services{% endblock %}
+{% block content %}
+<section class="admin-page-head"><div><span>Website</span><h1>Services</h1><p>Manage the capabilities displayed across the public website.</p></div><a class="admin-primary" href="{{ url_for('admin_service_new') }}">Add service</a></section>
+<section class="admin-panel">
+  <div class="table-wrap"><table><thead><tr><th>Order</th><th>Service</th><th>Visibility</th><th>Updated</th><th></th></tr></thead>
+  <tbody>{% for service in services %}<tr><td>{{ service.display_order }}</td><td><strong>{{ service.title }}</strong><small>{{ service.description|truncate(80) }}</small></td><td><span class="status {{ 'status-closed' if service.is_active else 'status-new' }}">{{ 'Active' if service.is_active else 'Draft' }}</span></td><td>{{ service.updated_at[:10] }}</td><td class="table-actions"><a href="{{ url_for('admin_service_edit', service_id=service.id) }}">Edit</a><form method="post" action="{{ url_for('admin_service_delete', service_id=service.id) }}" onsubmit="return confirm('Delete this service?')"><input type="hidden" name="_csrf_token" value="{{ csrf_token() }}"><button type="submit">Delete</button></form></td></tr>{% endfor %}</tbody></table></div>
+</section>
+{% endblock %}

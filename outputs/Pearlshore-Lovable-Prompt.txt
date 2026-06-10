@@ -1,0 +1,248 @@
+# Prompt for Lovable
+
+Build a modern, professional, responsive business website with an admin panel for a software company named **Pearlshore Technologies**.
+
+## Official Logo
+
+Use the uploaded image file **Pearlshore-Technologies-Logo.png** as the official Pearlshore Technologies logo throughout the website.
+
+Logo placement and behavior:
+
+* Display it prominently in the website header/navigation bar.
+* Use it again in the footer.
+* Use the image as the source for the browser favicon/app icon where practical.
+* Keep the logo's aspect ratio intact and never stretch or distort it.
+* Size it responsively so it remains clear on mobile, tablet, and desktop.
+* Place it on a clean dark navy background that blends naturally with the image.
+* Add appropriate alt text: **Pearlshore Technologies logo**.
+* Make the header logo clickable and link it to the homepage.
+* Do not replace the uploaded logo with generated text, a stock icon, or a different logo.
+
+The design should look premium, clean, modern, corporate, and trustworthy with smooth animations, professional typography, gradient highlights, and a responsive layout for mobile, tablet, and desktop.
+
+Use a modern tech-inspired color palette:
+
+* Primary: Deep Blue / Navy
+* Secondary: White
+* Accent: Cyan or Purple gradient
+* Minimal and elegant UI
+
+## Website Structure
+
+### 1. Homepage
+
+#### Hero Section
+
+Create a visually attractive hero section with:
+
+* Company name: **Pearlshore Technologies**
+* Professional tagline
+* Short intro about the company
+* Background illustration or animated tech visuals
+* Two CTA buttons:
+  * "Our Services"
+  * "Contact Us"
+
+When users click:
+
+* "Our Services" -> redirect to Services Page
+* "Contact Us" -> redirect to Contact Page
+
+Add smooth scrolling and hover animations.
+
+### 2. Services Preview Section (on Homepage)
+
+When the user scrolls down on the homepage, display service cards with headings and short descriptions.
+
+Each service card should contain:
+
+* Icon
+* Service title
+* Short description
+* "Read More" button
+
+When "Read More" is clicked, redirect to the Services Page.
+
+Include these services:
+
+#### Product Development & Engineering
+
+* Mobile App Development (iOS & Android)
+* Website Design & Development
+* E-commerce Solutions
+* Custom Web Applications
+* Web Scraping & Data Automation
+* Chatbot Development (AI-powered & rule-based)
+* Automation Testing & QA
+
+Description:
+We design and build scalable, high-performance digital products tailored to business needs with focus on scalability, security, performance, and user experience.
+
+#### UI/UX & Brand Experience
+
+* UI/UX Research & Design
+* Wireframing & Prototyping
+* Product Redesign & Optimization
+* Branding & Positioning Strategy
+
+Description:
+We create intuitive and engaging digital experiences that strengthen brand identity and improve user engagement.
+
+#### Digital Growth & Marketing
+
+* Digital Strategy Development
+* Social Media Marketing
+* Content Marketing
+* Search Engine Optimization (SEO)
+* Video Creation & Digital Content Production
+
+Description:
+We help businesses grow through data-driven marketing strategies and measurable digital growth solutions.
+
+### 3. Ready to Get Started Section
+
+After the services preview section, create a modern CTA banner section with:
+
+* Attractive icon/illustration
+* Heading: "Ready to Get Started?"
+* Subheading encouraging users to connect
+* Button: "Book a Consultation"
+
+When clicked, redirect users to the Contact Page.
+
+Use modern card/glassmorphism styling with animation effects.
+
+### 4. About Us Page
+
+Create a professional About Us page containing:
+
+* Company overview
+* Vision
+* Mission
+* Why choose us
+* Company values
+* Professional team section
+* Modern timeline or stats section
+
+Use professional layouts and icons.
+
+### 5. Services Page
+
+Create a dedicated Services Page that elaborates all services in detail.
+
+For each service:
+
+* Add detailed description
+* Benefits
+* Technologies/tools used
+* Modern service cards
+* Icons and illustrations
+
+Add sections for:
+
+* Product Development
+* UI/UX Design
+* Digital Marketing
+
+Include CTA buttons, smooth animations, and responsive layouts.
+
+### 6. Contact Page
+
+Create a professional contact page with:
+
+#### Contact Information
+
+* Company Name: Pearlshore Technologies
+* Email: kamalasruthi03@gmail.com
+* Phone number placeholder
+* Chennai location
+
+#### Contact Form
+
+Fields:
+
+* Name
+* Email
+* Phone Number
+* Service Interested In
+* Message
+
+When the user submits the form:
+
+* Send the message to **kamalasruthi03@gmail.com**
+* Show a success notification
+
+Use backend email integration using Node.js + Nodemailer or a serverless email API.
+
+#### Google Map Integration
+
+Embed an interactive Google Map showing **Chennai, India**.
+
+### 7. Footer
+
+Create a professional footer similar to modern IT companies containing:
+
+* The uploaded Pearlshore Technologies logo
+* Quick links
+* Services links
+* Social media icons
+* Contact details
+* Copyright section
+
+Add hover animations and a clean layout.
+
+## Admin Panel Requirements
+
+Create a secure admin dashboard with authentication.
+
+Admin features:
+
+* Login page
+* Dashboard analytics overview
+* Manage contact form submissions
+* Manage services content
+* Add/Edit/Delete service cards
+* Manage homepage content
+* Manage About page content
+* View consultation requests
+* Newsletter/user inquiries management
+
+Use JWT Authentication, protected routes, and role-based access.
+
+## Tech Stack
+
+Frontend:
+
+* React.js / Next.js
+* Tailwind CSS
+* Framer Motion animations
+
+Backend:
+
+* Node.js + Express
+
+Database:
+
+* MongoDB
+
+Admin Panel:
+
+* Full CRUD operations
+
+## Additional Requirements
+
+* Fully responsive design
+* SEO optimized
+* Fast loading performance
+* Smooth scrolling animations
+* Modern glassmorphism UI
+* Professional icons and illustrations
+* Reusable components
+* Clean folder structure
+* Dark/light mode support
+* Loading animations
+* Scroll reveal effects
+
+## Goal
+
+The website should look like a premium modern software agency website similar to top tech companies and should build trust, professionalism, and strong brand identity for Pearlshore Technologies.

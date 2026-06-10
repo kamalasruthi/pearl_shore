@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}About Us | Pearlshore Technologies{% endblock %}
+{% block content %}
+<section class="page-hero">
+  <div class="container narrow reveal">
+    <div class="eyebrow"><span></span>About Pearlshore</div>
+    <h1>Technology feels different when it starts with people.</h1>
+    <p>{{ site_content.about_intro }}</p>
+  </div>
+</section>
+
+<section class="section about-story">
+  <div class="container split-layout">
+    <div class="reveal">
+      <div class="image-panel">
+        <img src="{{ url_for('static', filename='images/pearlshore-logo.png') }}" alt="Pearlshore Technologies brand mark">
+      </div>
+    </div>
+    <div class="story-copy reveal">
+      <div class="eyebrow"><span></span>Our story</div>
+      <h2>Built to close the gap between a good idea and a great product.</h2>
+      <p>Pearlshore Technologies brings engineering, experience design, and digital growth into one practical team. That means fewer handoffs, sharper decisions, and work that stays connected to the business result.</p>
+      <p>We value plain language, steady collaboration, and solutions designed to keep working as our clients grow.</p>
+      <div class="stats-grid">
+        <div><strong>3</strong><span>Core disciplines</span></div>
+        <div><strong>1</strong><span>Integrated team</span></div>
+        <div><strong>360&deg;</strong><span>Product perspective</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section values-section">
+  <div class="container">
+    <div class="section-heading reveal">
+      <div><div class="eyebrow"><span></span>What guides us</div><h2>Principles we put into practice.</h2></div>
+    </div>
+    <div class="value-grid">
+      <article class="reveal"><span>01</span><h3>Clarity over complexity</h3><p>We make the path understandable, from technical decisions to project progress.</p></article>
+      <article class="reveal"><span>02</span><h3>Craft with purpose</h3><p>Every detail should improve usefulness, trust, performance, or delight.</p></article>
+      <article class="reveal"><span>03</span><h3>Progress together</h3><p>Great outcomes come from open collaboration and shared ownership.</p></article>
+      <article class="reveal"><span>04</span><h3>Built to endure</h3><p>We favor secure, maintainable foundations over short-lived shortcuts.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="section vision-section">
+  <div class="container vision-grid">
+    <article class="reveal"><div class="eyebrow light"><span></span>Our vision</div><h2>Make excellent digital capability accessible to every ambitious business.</h2></article>
+    <article class="reveal"><div class="eyebrow"><span></span>Our mission</div><h2>Turn complex challenges into clear, scalable, human-centered solutions.</h2></article>
+  </div>
+</section>
+
+<section class="section cta-section">
+  <div class="container">
+    <div class="cta-card reveal">
+      <div><div class="eyebrow light"><span></span>Work with us</div><h2>Bring us the challenge.</h2><p>We will bring curiosity, capability, and a plan.</p></div>
+      <a class="button button-light" href="{{ url_for('contact') }}">Meet your technology partner <span>&rarr;</span></a>
+    </div>
+  </div>
+</section>
+{% endblock %}

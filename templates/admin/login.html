@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin Login | Pearlshore</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+</head>
+<body class="login-body">
+  <main class="login-card">
+    <a class="admin-brand" href="{{ url_for('home') }}">
+      <img src="{{ url_for('static', filename='images/pearlshore-logo.png') }}" alt="Pearlshore logo">
+      <span>Pearlshore<small>Admin console</small></span>
+    </a>
+    <div><span class="login-kicker">Secure access</span><h1>Welcome back.</h1><p>Sign in to manage website content and inquiries.</p></div>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% for category, message in messages %}<div class="admin-alert {{ category }}">{{ message }}</div>{% endfor %}
+    {% endwith %}
+    <form method="post">
+      <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+      <label>Email address<input type="email" name="email" required autocomplete="username" placeholder="admin@pearlshore.com"></label>
+      <label>Password<input type="password" name="password" required autocomplete="current-password" placeholder="Enter your password"></label>
+      <button class="admin-primary" type="submit">Sign in</button>
+    </form>
+    <a class="back-link" href="{{ url_for('home') }}">&larr; Back to website</a>
+  </main>
+</body>
+</html>

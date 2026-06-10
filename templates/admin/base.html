@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Admin{% endblock %} | Pearlshore</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+</head>
+<body>
+  <aside class="admin-sidebar">
+    <a class="admin-brand" href="{{ url_for('admin_dashboard') }}">
+      <img src="{{ url_for('static', filename='images/pearlshore-logo.png') }}" alt="Pearlshore logo">
+      <span>Pearlshore<small>Admin console</small></span>
+    </a>
+    <nav>
+      <a class="{{ 'active' if request.endpoint == 'admin_dashboard' }}" href="{{ url_for('admin_dashboard') }}">Overview</a>
+      <a class="{{ 'active' if request.endpoint in ['admin_services', 'admin_service_new', 'admin_service_edit'] }}" href="{{ url_for('admin_services') }}">Services</a>
+      <a class="{{ 'active' if request.endpoint == 'admin_content' }}" href="{{ url_for('admin_content') }}">Website content</a>
+      <a class="{{ 'active' if request.endpoint == 'admin_inquiries' }}" href="{{ url_for('admin_inquiries') }}">Inquiries</a>
+      <a href="{{ url_for('home') }}" target="_blank">View website &nearr;</a>
+    </nav>
+    <form method="post" action="{{ url_for('admin_logout') }}">
+      <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+      <button type="submit">Sign out</button>
+    </form>
+  </aside>
+  <main class="admin-main">
+    <header><div><span>Workspace</span><strong>{{ session.admin_email }}</strong></div></header>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% for category, message in messages %}<div class="admin-alert {{ category }}">{{ message }}</div>{% endfor %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

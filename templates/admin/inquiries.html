@@ -1,0 +1,22 @@
+{% extends "admin/base.html" %}
+{% block title %}Inquiries{% endblock %}
+{% block content %}
+<section class="admin-page-head"><div><span>Inbox</span><h1>Contact inquiries</h1><p>Review consultation requests and keep their follow-up status current.</p></div></section>
+<section class="inquiry-grid">
+  {% for item in inquiries %}
+  <article class="inquiry-card">
+    <div class="inquiry-meta"><span class="status status-{{ item.status }}">{{ item.status }}</span><time>{{ item.created_at }}</time></div>
+    <h2>{{ item.name }}</h2><a href="mailto:{{ item.email }}">{{ item.email }}</a>{% if item.phone %}<a href="tel:{{ item.phone }}">{{ item.phone }}</a>{% endif %}
+    <strong>{{ item.service or "General inquiry" }}</strong><p>{{ item.message }}</p>
+    <div class="email-delivery email-{{ item.email_status }}">
+      Email: {{ item.email_status|title }}
+      {% if item.email_error %}<small title="{{ item.email_error }}">{{ item.email_error }}</small>{% endif %}
+    </div>
+    <div class="inquiry-actions">
+      <form method="post" action="{{ url_for('admin_inquiry_status', inquiry_id=item.id) }}"><input type="hidden" name="_csrf_token" value="{{ csrf_token() }}"><select name="status" onchange="this.form.submit()">{% for status in ['new', 'contacted', 'closed'] %}<option value="{{ status }}" {{ 'selected' if item.status == status }}>{{ status|title }}</option>{% endfor %}</select></form>
+      <form method="post" action="{{ url_for('admin_inquiry_delete', inquiry_id=item.id) }}" onsubmit="return confirm('Delete this inquiry?')"><input type="hidden" name="_csrf_token" value="{{ csrf_token() }}"><button type="submit">Delete</button></form>
+    </div>
+  </article>
+  {% else %}<div class="admin-panel empty">No inquiries have arrived yet.</div>{% endfor %}
+</section>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "admin/base.html" %}
+{% block title %}{{ "Edit" if service else "New" }} Service{% endblock %}
+{% block content %}
+<section class="admin-page-head"><div><span>Services</span><h1>{{ "Edit service" if service else "Add a service" }}</h1><p>Keep the description clear, specific, and focused on customer value.</p></div><a class="admin-secondary" href="{{ url_for('admin_services') }}">Cancel</a></section>
+<form class="admin-form admin-panel" method="post">
+  <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+  <div class="form-grid">
+    <label class="wide">Service title<input name="title" value="{{ service.title if service else '' }}" required></label>
+    <label>Icon category<select name="icon"><option value="product" {{ 'selected' if service and service.icon == 'product' }}>Product</option><option value="design" {{ 'selected' if service and service.icon == 'design' }}>Design</option><option value="growth" {{ 'selected' if service and service.icon == 'growth' }}>Growth</option></select></label>
+    <label>Display order<input type="number" name="display_order" value="{{ service.display_order if service else 0 }}"></label>
+    <label class="wide">Short description<textarea name="description" rows="4" required>{{ service.description if service else '' }}</textarea></label>
+    <label class="wide">Deliverables <small>Separate items with commas.</small><textarea name="benefits" rows="4">{{ service.benefits if service else '' }}</textarea></label>
+    <label class="wide">Tools and technologies <small>Separate items with commas.</small><textarea name="technologies" rows="3">{{ service.technologies if service else '' }}</textarea></label>
+    <label class="check-label"><input type="checkbox" name="is_active" {{ 'checked' if not service or service.is_active }}> Show on public website</label>
+  </div>
+  <button class="admin-primary" type="submit">{{ "Save changes" if service else "Create service" }}</button>
+</form>
+{% endblock %}
