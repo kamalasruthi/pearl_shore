@@ -563,8 +563,12 @@ with app.app_context():
 
 
 if __name__ == "__main__":
+    # Render requires the application to listen on 0.0.0.0.
+    # Render provides PORT automatically; 10000 is a local fallback.
+    port = int(os.environ.get("PORT", "10000"))
+
     app.run(
-        host="127.0.0.1",
-        port=int(os.environ.get("PORT", "5000")),
+        host="0.0.0.0",
+        port=port,
         debug=os.environ.get("FLASK_DEBUG") == "1",
     )
